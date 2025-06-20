@@ -3,14 +3,14 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0"
+      version = "~> 6.0"
     }
   }
 
   cloud {
     organization = "rohit-jha"
     workspaces {
-      name = "hello-flask-k8s"
+      name = "hello-flask-k8s-base-dev"
     }
   }
 }
