@@ -3,13 +3,15 @@ resource "aws_vpc_ipam_preview_next_cidr" "this" {
 }
 
 locals {
-  # Split previewed /16 into 2 blocks:
-  #   - 10.0.0.0/17 [private]
-  #   - 10.0.128.0/17 [public], then further split into smaller
-  partitioned = cidrsubnets(aws_vpc_ipam_preview_next_cidr.this.cidr, 1) # 1 bit → 2 subnets
-
-  private_range = local.partitioned[0] # 10.0.0.0/17
-  public_range  = local.partitioned[1] # 10.0.128.0/17
+  # 1:8 ratio for public:private
+  partitioned = cidrsubnets(aws_vpc_ipam_preview_next_cidr.this.cidr, 4, 1)
+  
+  public_range  = local.partitioned[0] # 1/8 of space (/20 = 4,096 IPs)
+  private_range = local.partitioned[1] # 8/8 of space (/17 = 32,768 IPs)
+  
+  # Calculate bits needed to divide equally among AZs
+  az_count = length(data.aws_availability_zones.available.names)
+  subnet_bits = ceil(log(local.az_count, 2))
 }
 
 module "vpc" {
@@ -21,14 +23,16 @@ module "vpc" {
 
   azs = data.aws_availability_zones.available.names
   
+  # Divide public range equally among AZs
   public_subnets = [
-    for i in range(length(data.aws_availability_zones.available.names)) :
-    cidrsubnet(local.public_range, 5, i)
+    for i in range(local.az_count) :
+    cidrsubnet(local.public_range, local.subnet_bits, i)
   ]
 
+  # Divide private range equally among AZs  
   private_subnets = [
-    for i in range(length(data.aws_availability_zones.available.names)) :
-    cidrsubnet(local.private_range, 1, i)
+    for i in range(local.az_count) :
+    cidrsubnet(local.private_range, local.subnet_bits, i)
   ]
 
   enable_nat_gateway   = true
