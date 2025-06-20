@@ -6,7 +6,7 @@ resource "aws_vpc_ipam" "this" {
 
 # IPv4 IPAM Pool
 resource "aws_vpc_ipam_pool" "this" {
-  description                       = "IPv4 pool for ${var.name}-${var.environment}"
+  description                       = "${var.name}-ipv4-pool"
   address_family                    = "ipv4"
   ipam_scope_id                     = aws_vpc_ipam.this.private_default_scope_id
   locale                            = var.aws_region

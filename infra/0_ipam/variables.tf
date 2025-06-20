@@ -10,12 +10,6 @@ variable "name" {
   default     = "hello-flask"
 }
 
-variable "environment" {
-  description = "Environment name"
-  type        = string
-  default     = "dev"
-}
-
 variable "ipv4_cidr" {
   description = "IPv4 CIDR block for IPAM pool (using largest possible private range)"
   type        = string
