@@ -1,7 +1,7 @@
 # VPC using terraform-aws-modules/vpc/aws
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "~> 5.0"
+  version = "~> 6.0"
 
   name = "${var.name}-${var.environment}"
   cidr = var.vpc_cidr
@@ -13,6 +13,7 @@ module "vpc" {
   enable_nat_gateway   = true
   enable_dns_hostnames = true
   enable_dns_support   = true
+  single_nat_gateway   = true
 
   public_subnet_tags = {
     type                     = "public"

@@ -6,6 +6,13 @@ terraform {
       version = "~> 5.0"
     }
   }
+
+  cloud {
+    organization = "rohit-jha"
+    workspaces {
+      name = "hello-flask-k8s"
+    }
+  }
 }
 
 provider "aws" {
