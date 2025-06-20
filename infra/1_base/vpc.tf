@@ -16,7 +16,7 @@ locals {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "~> 6.0"
+  version = "~> 5.0"
 
   name = "${var.name}-${var.environment}"
   cidr = aws_vpc_ipam_preview_next_cidr.this.cidr
