@@ -5,7 +5,7 @@ module "eks" {
   cluster_name    = "${var.name}-${var.environment}"
   cluster_version = "1.33"
 
-  cluster_endpoint_public_access = true
+  cluster_endpoint_public_access = false
 
   enable_cluster_creator_admin_permissions = true
 
