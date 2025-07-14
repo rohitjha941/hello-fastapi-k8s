@@ -22,5 +22,10 @@ variable "vpc_cidr" {
   default     = "10.0.0.0/16"
 }
 
+variable "hcp_terraform_org_name" {
+  description = "HCP Terraform org name"
+  type        = string
+}
+
 
 
