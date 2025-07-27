@@ -28,6 +28,7 @@ provider "aws" {
       Project     = var.name
       Environment = var.environment
       ManagedBy   = "terraform"
+      Component   = "base"
     }
   }
 }

@@ -3,7 +3,7 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 6.0"
+      version = "~> 5.0"
     }
   }
 }
@@ -13,9 +13,10 @@ provider "aws" {
 
   default_tags {
     tags = {
-      Project   = var.name
-      ManagedBy = "terraform"
-      Component = "ipam"
+      Project     = var.name
+      Environment = var.environment
+      ManagedBy   = "terraform"
+      Component   = "ipam"
     }
   }
 }
