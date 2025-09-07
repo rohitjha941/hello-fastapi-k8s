@@ -22,7 +22,7 @@ terraform {
  cloud {
     organization = "rohit-jha"
     workspaces {
-      name = "hello-flask-k8s-kubernetes-addons-dev"
+      name = "hello-fastapi-k8s-kubernetes-addons-dev"
     }
   }
 }

@@ -7,7 +7,7 @@ variable "aws_region" {
 variable "name" {
   description = "Name of the project"
   type        = string
-  default     = "hello-flask"
+  default     = "hello-fastapi"
 }
 
 variable "environment" {

@@ -1,6 +1,6 @@
-# Hello Flask K8s
+# Hello FastAPI K8s
 
-This project demonstrates a Flask application deployed on AWS EKS with comprehensive infrastructure as code using Terraform.
+This project demonstrates a FastAPI application deployed on AWS EKS with comprehensive infrastructure as code using Terraform.
 
 ## Architecture
 

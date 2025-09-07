@@ -15,7 +15,7 @@ terraform {
   cloud {
     organization = "rohit-jha"
     workspaces {
-      name = "hello-flask-k8s-base-dev"
+      name = "hello-fastapi-k8s-base-dev"
     }
   }
 }

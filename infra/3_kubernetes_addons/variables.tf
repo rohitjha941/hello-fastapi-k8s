@@ -7,7 +7,7 @@ variable "aws_region" {
 variable "name" {
   type        = string
   description = "Base name for resources"
-  default     = "hello-flask"
+  default     = "hello-fastapi"
 }
 
 variable "environment" {
