@@ -30,8 +30,8 @@ terraform workspace new tfc-bootstrap
 ```bash
 # Required variables
 export TF_VAR_tfc_organization="your-org"
-export TF_VAR_aws_access_key_id="AKIA..."
-export TF_VAR_aws_secret_access_key="secret..."
+export TF_VAR_AWS_ACCESS_KEY_ID="AKIA..."
+export TF_VAR_AWS_SECRET_ACCESS_KEY="secret..."
 export TF_VAR_github_repository="yourusername/hello-flask-k8s"
 ```
 

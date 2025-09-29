@@ -8,8 +8,6 @@ terraform {
     }
   }
   
-  # This workspace manages other workspaces, so it should be created manually
-  # or via CLI first, then connected to VCS
   cloud {
     organization = var.tfc_organization
     

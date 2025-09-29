@@ -8,7 +8,7 @@ resource "tfe_variable_set" "aws_credentials" {
 
 resource "tfe_variable" "aws_access_key_id" {
   key             = "AWS_ACCESS_KEY_ID"
-  value           = var.aws_access_key_id
+  value           = var.AWS_ACCESS_KEY_ID
   category        = "env"
   sensitive       = true
   variable_set_id = tfe_variable_set.aws_credentials.id
@@ -16,7 +16,7 @@ resource "tfe_variable" "aws_access_key_id" {
 
 resource "tfe_variable" "aws_secret_access_key" {
   key             = "AWS_SECRET_ACCESS_KEY"
-  value           = var.aws_secret_access_key
+  value           = var.AWS_SECRET_ACCESS_KEY
   category        = "env"
   sensitive       = true
   variable_set_id = tfe_variable_set.aws_credentials.id

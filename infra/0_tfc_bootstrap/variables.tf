@@ -6,7 +6,7 @@ variable "tfc_organization" {
 variable "github_repository" {
   description = "GitHub repository in the format 'owner/repo'"
   type        = string
-  default     = "yourusername/hello-flask-k8s"
+  default     = "rohitjha941/hello-fastapi-k8s"
 }
 
 variable "github_oauth_client_name" {
@@ -15,13 +15,13 @@ variable "github_oauth_client_name" {
   default     = "GitHub"
 }
 
-variable "aws_access_key_id" {
+variable "AWS_ACCESS_KEY_ID" {
   description = "AWS Access Key ID for Terraform Cloud"
   type        = string
   sensitive   = true
 }
 
-variable "aws_secret_access_key" {
+variable "AWS_SECRET_ACCESS_KEY" {
   description = "AWS Secret Access Key for Terraform Cloud"
   type        = string
   sensitive   = true
@@ -31,8 +31,8 @@ variable "aws_regions" {
   description = "AWS regions for each environment"
   type        = map(string)
   default = {
-    dev     = "us-east-1"
-    staging = "us-east-1"
+    dev     = "us-west-2"
+    staging = "us-west-2"
     prod    = "us-west-2"
   }
 }
