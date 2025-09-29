@@ -5,13 +5,10 @@ resource "tfe_workspace" "ipam" {
   project_id   = tfe_project.hello_fastapi.id
   description  = "IP Address Management - Global"
   
-  dynamic "vcs_repo" {
-    for_each = length(data.tfe_oauth_client.github) > 0 ? [1] : []
-    content {
-      identifier     = var.github_repository
-      oauth_token_id = data.tfe_oauth_client.github[0].oauth_token_id
-      branch         = "main"
-    }
+  vcs_repo {
+    identifier                 = var.github_repository
+    github_app_installation_id = data.tfe_github_app_installation.github.installation_id
+    branch                     = "main"
   }
   
   working_directory = "infra/1_ipam"
@@ -34,13 +31,10 @@ resource "tfe_workspace" "main" {
   project_id   = tfe_project.hello_fastapi.id
   description  = "${title(each.value.layer)} infrastructure - ${upper(each.value.environment)}"
   
-  dynamic "vcs_repo" {
-    for_each = length(data.tfe_oauth_client.github) > 0 ? [1] : []
-    content {
-      identifier     = var.github_repository
-      oauth_token_id = data.tfe_oauth_client.github[0].oauth_token_id
-      branch         = each.value.environment == "prod" ? "main" : each.value.environment
-    }
+  vcs_repo {
+    identifier                 = var.github_repository
+    github_app_installation_id = data.tfe_github_app_installation.github.installation_id
+    branch                     = each.value.environment == "prod" ? "main" : each.value.environment
   }
   
   working_directory     = each.value.path

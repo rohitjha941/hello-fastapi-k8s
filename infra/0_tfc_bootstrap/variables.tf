@@ -9,10 +9,10 @@ variable "github_repository" {
   default     = "rohitjha941/hello-fastapi-k8s"
 }
 
-variable "github_oauth_client_name" {
-  description = "Name of the GitHub OAuth client in Terraform Cloud. Leave empty to skip VCS integration."
+variable "github_organization_name" {
+  description = "GitHub organization or username for GitHub App integration"
   type        = string
-  default     = "GitHub"
+  default     = "rohitjha941"
 }
 
 variable "aws_regions" {
