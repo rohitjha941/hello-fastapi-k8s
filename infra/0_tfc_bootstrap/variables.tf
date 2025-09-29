@@ -10,21 +10,9 @@ variable "github_repository" {
 }
 
 variable "github_oauth_client_name" {
-  description = "Name of the GitHub OAuth client in Terraform Cloud"
+  description = "Name of the GitHub OAuth client in Terraform Cloud. Leave empty to skip VCS integration."
   type        = string
   default     = "GitHub"
-}
-
-variable "AWS_ACCESS_KEY_ID" {
-  description = "AWS Access Key ID for Terraform Cloud"
-  type        = string
-  sensitive   = true
-}
-
-variable "AWS_SECRET_ACCESS_KEY" {
-  description = "AWS Secret Access Key for Terraform Cloud"
-  type        = string
-  sensitive   = true
 }
 
 variable "aws_regions" {

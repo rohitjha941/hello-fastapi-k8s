@@ -9,10 +9,10 @@ terraform {
   }
   
   cloud {
-    organization = var.tfc_organization
+    organization = "rohit-jha"
     
     workspaces {
-      name = "tfc-bootstrap"
+      name = "0_tfc-bootstrap"
     }
   }
 }
